@@ -758,13 +758,13 @@
     <p class="section-sub">A mix of real products, client work, and passion projects.</p>
   </div>
 
-  <div class="projects">
+<div class="projects">
     <!-- DeferIT -->
     <div class="project-card reveal">
       <div class="project-info">
         <div class="project-tag">Mobile App</div>
         <h3 class="project-title">DeferIT</h3>
-        <p class="project-desc">A full-stack exam deferral management app for universities. Designed the complete UI/UX from concept to shipped product — handling student, faculty, proctor, and admin roles in one clean system.</p>
+        <p class="project-desc">A full-stack exam deferral management app for universities. Designed the complete UI/UX from concept to built product, handling student, faculty, proctor, and admin roles in one clean system.</p>
         <div class="project-chips">
           <span class="chip">Figma</span>
           <span class="chip">UI/UX Design</span>
@@ -772,7 +772,8 @@
           <span class="chip">Multi-role System</span>
         </div>
       </div>
-      <div class="project-visual visual-deferit" style="overflow: hidden; padding: 0; background: linear-gradient(135deg, #0D1626 0%, #0A1020 100%);">
+      <div class="project-visual visual-deferit" style="overflow: hidden; padding: 0; position: relative;">
+        <button onclick="this.nextElementSibling.scrollBy({left:-220,behavior:'smooth'})" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);z-index:10;background:rgba(10,13,24,0.8);border:1px solid rgba(30,127,255,0.3);color:#1E7FFF;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">‹</button>
         <div class="deferit-gallery">
           <img src="deferit-splash.png" alt="DeferIT Splash" class="deferit-screen">
           <img src="deferit-student.png" alt="DeferIT Student" class="deferit-screen">
@@ -780,6 +781,7 @@
           <img src="deferit-admin.png" alt="DeferIT Admin" class="deferit-screen">
           <img src="deferit-ai.png" alt="DeferIT AI" class="deferit-screen">
         </div>
+        <button onclick="this.previousElementSibling.scrollBy({left:220,behavior:'smooth'})" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);z-index:10;background:rgba(10,13,24,0.8);border:1px solid rgba(30,127,255,0.3);color:#1E7FFF;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">›</button>
       </div>
     </div>
 
@@ -797,21 +799,34 @@
         </div>
       </div>
       <div class="project-visual visual-social" style="overflow: hidden; padding: 0; position: relative;">
-  <button onclick="this.nextElementSibling.scrollBy({left:-220,behavior:'smooth'})" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);z-index:10;background:rgba(10,13,24,0.8);border:1px solid rgba(30,127,255,0.3);color:#1E7FFF;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">‹</button>
-  <div class="deferit-gallery">
-    <img src="social-1.jpeg" alt="Vegas Mitch graphic" class="deferit-screen" style="height:240px;width:auto;border-radius:12px;">
-    <img src="social-2.jpeg" alt="Game 4 graphic" class="deferit-screen" style="height:240px;width:auto;border-radius:12px;">
-    <img src="social-3.jpeg" alt="Confirmed Matchup graphic" class="deferit-screen" style="height:240px;width:auto;border-radius:12px;">
-    <img src="social-4.jpeg" alt="Draft card graphic" class="deferit-screen" style="height:240px;width:auto;border-radius:12px;">
-  </div>
-  <button onclick="this.previousElementSibling.scrollBy({left:220,behavior:'smooth'})" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);z-index:10;background:rgba(10,13,24,0.8);border:1px solid rgba(30,127,255,0.3);color:#1E7FFF;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">›</button>
-</div>
+        <button onclick="this.nextElementSibling.scrollBy({left:-220,behavior:'smooth'})" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);z-index:10;background:rgba(10,13,24,0.8);border:1px solid rgba(30,127,255,0.3);color:#1E7FFF;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">‹</button>
+        <div class="deferit-gallery">
+          <img src="social-1.jpeg" alt="Vegas Mitch graphic" class="deferit-screen" style="height:240px;width:auto;border-radius:12px;">
+          <img src="social-2.jpeg" alt="Game 4 graphic" class="deferit-screen" style="height:240px;width:auto;border-radius:12px;">
+          <img src="social-3.jpeg" alt="Confirmed Matchup graphic" class="deferit-screen" style="height:240px;width:auto;border-radius:12px;">
+          <img src="social-4.jpeg" alt="Draft card graphic" class="deferit-screen" style="height:240px;width:auto;border-radius:12px;">
+        </div>
+        <button onclick="this.previousElementSibling.scrollBy({left:220,behavior:'smooth'})" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);z-index:10;background:rgba(10,13,24,0.8);border:1px solid rgba(30,127,255,0.3);color:#1E7FFF;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">›</button>
+      </div>
     </div>
 
-    <!-- Coming soon -->
-    <div class="project-visual visual-brand" style="overflow: hidden; padding: 0;">
-  <img src="dashboard.jpeg" alt="Pulse team analytics dashboard" style="width:100%;height:100%;object-fit:cover;object-fit:cover;object-position:top left;">
-</div>
+    <!-- SaaS Dashboard -->
+    <div class="project-card reveal reveal-delay-2">
+      <div class="project-info">
+        <div class="project-tag">SaaS Design</div>
+        <h3 class="project-title">Pulse Dashboard</h3>
+        <p class="project-desc">A team analytics and reporting dashboard concept built for modern SaaS teams. Clean light theme with stat cards, charts, leaderboard, and activity feed.</p>
+        <div class="project-chips">
+          <span class="chip">Figma</span>
+          <span class="chip">Web Design</span>
+          <span class="chip">SaaS</span>
+          <span class="chip">Dashboard UI</span>
+        </div>
+      </div>
+      <div class="project-visual visual-brand" style="overflow: hidden; padding: 0;">
+        <img src="dashboard.jpeg" alt="Pulse team analytics dashboard" style="width:100%;height:100%;object-fit:cover;object-position:top left;">
+      </div>
+    </div>
   </div>
 </section>
 
