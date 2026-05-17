@@ -15,8 +15,8 @@
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --blue: #1E7FFF;
-    --blue-bright: #4DA3FF;
+    --blue: #4169E1;
+    --blue-bright: #6B8FFF;
     --blue-glow: rgba(30, 127, 255, 0.15);
     --blue-glow-strong: rgba(30, 127, 255, 0.3);
     --bg: #060810;
@@ -102,6 +102,11 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--text); }
+  .nav-links a.active {
+    color: var(--text);
+    border-bottom: 2px solid var(--blue);
+    padding-bottom: 4px;
+  }
   .nav-cta {
     font-size: 13px; font-weight: 500;
     color: var(--blue);
@@ -129,15 +134,18 @@
       radial-gradient(ellipse 80% 60% at 60% 40%, rgba(30,127,255,0.07) 0%, transparent 70%),
       radial-gradient(ellipse 40% 40% at 80% 80%, rgba(30,127,255,0.04) 0%, transparent 60%);
   }
-  .hero-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-    background-size: 80px 80px;
-    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+  .hero-grid { display: none; }
+  .hero-content { position: relative; z-index: 2; max-width: 560px; }
+  .hero-logo-display {
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .hero-content { position: relative; z-index: 2; max-width: 800px; }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
     font-size: 12px; font-weight: 500;
@@ -732,14 +740,14 @@ body::after {
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
+  <canvas id="particles" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;"></canvas>
   <div class="hero-content">
     <div class="hero-eyebrow">Available for freelance work</div>
     <h1 class="hero-title">
-      Braeden<br>
-      <span class="line2">Gomes<span class="accent">.</span></span>
+      UI/UX<br>
+      <span class="line2">Designer<span class="accent">.</span></span>
     </h1>
-    <p class="hero-sub">UI/UX designer building clean, intentional interfaces that actually work for the people using them.</p>
+    <p class="hero-sub">Building clean, intentional interfaces that actually work for the people using them.</p>
     <div class="hero-actions">
       <a href="#work" class="btn-primary">
         View Work
@@ -750,6 +758,9 @@ body::after {
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
+  </div>
+  <div class="hero-logo-display">
+    <img src="logo.png" alt="BG" style="width:280px;height:auto;filter:drop-shadow(0 0 60px rgba(65,105,225,0.5));">
   </div>
   <div class="hero-scroll">
     <div class="scroll-line"></div>
@@ -1047,6 +1058,50 @@ body::after {
       nav.style.borderBottom = 'none';
     }
   });
+const canvas = document.getElementById('particles');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let w, h, dots;
+    function resize() {
+      w = canvas.width = canvas.offsetWidth;
+      h = canvas.height = canvas.offsetHeight;
+    }
+    function init() {
+      resize();
+      dots = Array.from({length: 80}, () => ({
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 2 + 1
+      }));
+    }
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      dots.forEach(d => {
+        d.x += d.vx; d.y += d.vy;
+        if (d.x < 0 || d.x > w) d.vx *= -1;
+        if (d.y < 0 || d.y > h) d.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(65,105,225,0.5)';
+        ctx.fill();
+      });
+      dots.forEach((a, i) => dots.slice(i+1).forEach(b => {
+        const dist = Math.hypot(a.x - b.x, a.y - b.y);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = `rgba(65,105,225,${0.15 * (1 - dist/120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }));
+      requestAnimationFrame(draw);
+    }
+    window.addEventListener('resize', init);
+    init(); draw();
+  }
 </script>
 </body>
 </html>
