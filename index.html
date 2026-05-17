@@ -645,12 +645,24 @@
     .services-header { flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 
-@media (max-width: 768px) {
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: env(safe-area-inset-top);
+    background: rgba(6,8,16,0.98);
+    z-index: 101;
+  }
+
+  @media (max-width: 768px) {
     .cursor, .cursor-ring { display: none; }
     body { cursor: auto; }
-    nav { padding: 16px 20px; }
-    nav { padding-top: max(16px, env(safe-area-inset-top)); }
-    nav { background: rgba(6,8,16,0.98) !important; backdrop-filter: blur(20px); }
+    nav {
+      padding: 16px 20px;
+      padding-top: calc(16px + env(safe-area-inset-top));
+      background: rgba(6,8,16,0.98) !important;
+      backdrop-filter: blur(20px);
+    }
     .nav-links { display: none; }
     .nav-cta { padding: 8px 16px; font-size: 12px; }
     .hero { padding: 100px 20px 60px; min-height: 90vh; }
