@@ -353,7 +353,7 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    height: 280px;
+    height: 350px;
     display: flex; align-items: center; justify-content: center;
     position: relative;
     overflow: hidden;
@@ -372,25 +372,28 @@
   /* DeferIT image gallery */
   .deferit-gallery {
     display: flex;
-    gap: 12px;
-    padding: 20px 16px;
+    gap: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
     align-items: center;
     overflow-x: auto;
+    overflow-y: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
     scroll-snap-type: x mandatory;
+    touch-action: pan-x;
   }
   .deferit-gallery::-webkit-scrollbar { display: none; }
   .deferit-screen {
-    height: 240px;
+    height: 320px;
     width: auto;
-    border-radius: 16px;
+    border-radius: 0;
     flex-shrink: 0;
     scroll-snap-align: start;
-    transition: transform 0.2s ease;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    transition: none;
+    box-shadow: none;
+    pointer-events: none;
   }
   .deferit-screen:hover { transform: scale(1.04); }
 
