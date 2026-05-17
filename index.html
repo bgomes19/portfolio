@@ -644,8 +644,7 @@
     .services-header { flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 
-  @media (max-width: 768px) {
-    .project-row { grid-template-columns: 1fr !important; }
+@media (max-width: 768px) {
     .cursor, .cursor-ring { display: none; }
     body { cursor: auto; }
     nav { padding: 16px 20px; }
@@ -656,18 +655,20 @@
     .hero-sub { font-size: 16px; margin-bottom: 36px; }
     .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
     .hero-scroll { display: none; }
-    .stats { grid-template-columns: 1fr 1fr; padding: 0; }
+    .stats { grid-template-columns: 1fr 1fr !important; padding: 0; }
     .stat { padding: 24px 20px; }
     .stat-num { font-size: 36px; }
     section { padding: 64px 20px; }
-    .project-card { grid-template-columns: 1fr; padding: 28px 24px; gap: 28px; }
+    .project-card { grid-template-columns: 1fr !important; padding: 28px 24px; gap: 28px; }
+    .project-row { grid-template-columns: 1fr !important; min-height: unset !important; }
+    .project-row > div { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .project-title { font-size: 28px; }
     .project-visual { height: 240px; }
-    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-grid { grid-template-columns: 1fr !important; gap: 40px; }
     .about-intro { font-size: 18px; }
     .skills-grid { grid-template-columns: 1fr 1fr; }
     .services-header { flex-direction: column; align-items: flex-start; gap: 12px; }
-    .services-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr !important; }
     .contact-title { font-size: clamp(36px, 10vw, 64px); }
     .contact-actions { flex-direction: column; align-items: center; }
     footer { padding: 24px 20px; flex-direction: column; gap: 8px; text-align: center; }
