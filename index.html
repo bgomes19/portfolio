@@ -511,11 +511,11 @@
     overflow: hidden;
   }
   .service-card.featured {
-    background: var(--blue);
-    border-color: var(--blue);
+    background: var(--bg2);
+    border-color: var(--border);
   }
   .service-card:not(.featured):hover { border-color: var(--border-blue); transform: translateY(-4px); }
-  .service-card.featured:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(30,127,255,0.4); }
+  .service-card.featured:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-4px); box-shadow: 0 24px 60px rgba(30,127,255,0.4); }
   .service-badge {
     display: inline-block;
     font-size: 10px; font-weight: 700;
