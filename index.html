@@ -6,6 +6,12 @@
 <title>Braeden Gomes — UI/UX Designer</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
+  @supports (padding-top: env(safe-area-inset-top)) {
+    nav {
+      padding-top: calc(24px + env(safe-area-inset-top)) !important;
+      background: rgba(6,8,16,0.98) !important;
+    }
+  }
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
@@ -705,7 +711,7 @@ body::after {
   }
 </style>
 </head>
-<body>
+<body style="padding-top: env(safe-area-inset-top); background: #060810;">
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
