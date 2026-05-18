@@ -239,7 +239,7 @@
 
   /* STATS */
   .stats {
-    padding: 0 60px 100px;
+    padding: 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1px;
@@ -248,7 +248,7 @@
     border-bottom: 1px solid var(--border);
   }
   .stat {
-    background: var(--bg);
+    background: var(--bg2);
     padding: 40px 40px;
     position: relative;
     overflow: hidden;
@@ -905,6 +905,7 @@ body::after {
     <li><a href="#work">Work</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Let's Talk</a>
 </nav>
@@ -1169,6 +1170,94 @@ body::after {
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <polygon points="0,0 1440,80 1440,80 0,80" fill="var(--bg)"/>
     <polygon points="0,0 1440,80 0,80" fill="var(--bg)"/>
+  </svg>
+</div>
+
+<!-- REVIEWS -->
+<section id="reviews" style="background:var(--bg);padding:120px 60px;">
+  <div class="reveal" style="margin-bottom:64px;">
+    <div class="section-label">Reviews</div>
+    <h2 class="section-title">What people say.</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+
+    <div class="reveal" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-top:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:20px;">
+      <div style="display:flex;gap:4px;">
+        <span style="color:#4169E1;font-size:18px;">★★★★★</span>
+      </div>
+      <p style="font-size:15px;color:var(--text);line-height:1.7;font-weight:300;flex:1;">"Really easy to use, really good quality as well. Was very happy with the process and the results!"</p>
+      <div style="display:flex;align-items:center;gap:12px;border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(65,105,225,0.2);border:1px solid rgba(65,105,225,0.3);display:flex;align-items:center;justify-content:center;font-family:'Archivo Black',sans-serif;font-size:14px;color:#4169E1;flex-shrink:0;">CM</div>
+        <div>
+          <div style="font-size:14px;font-weight:500;color:var(--text);">CM Football Training</div>
+          <div style="font-size:12px;color:var(--text-muted);">Fiverr Client</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-1" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-top:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:20px;">
+      <div style="display:flex;gap:4px;">
+        <span style="color:#4169E1;font-size:18px;">★★★★★</span>
+      </div>
+      <p style="font-size:15px;color:var(--text);line-height:1.7;font-weight:300;flex:1;">"Amazing designs and great communication. Always easy to work with and always very pleased with the results."</p>
+      <div style="display:flex;align-items:center;gap:12px;border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(65,105,225,0.2);border:1px solid rgba(65,105,225,0.3);display:flex;align-items:center;justify-content:center;font-family:'Archivo Black',sans-serif;font-size:14px;color:#4169E1;flex-shrink:0;">SA</div>
+        <div>
+          <div style="font-size:14px;font-weight:500;color:var(--text);">@sabresaccess</div>
+          <div style="font-size:12px;color:var(--text-muted);">Instagram Client</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-2" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-top:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:20px;">
+      <div style="display:flex;gap:4px;">
+        <span style="color:#4169E1;font-size:18px;">★★★★★</span>
+      </div>
+      <p style="font-size:15px;color:var(--text);line-height:1.7;font-weight:300;flex:1;">"Very creative in the way he did things. The way he transformed our UI is an understatement. Also helped build a lot of our features."</p>
+      <div style="display:flex;align-items:center;gap:12px;border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(65,105,225,0.2);border:1px solid rgba(65,105,225,0.3);display:flex;align-items:center;justify-content:center;font-family:'Archivo Black',sans-serif;font-size:14px;color:#4169E1;flex-shrink:0;">VH</div>
+        <div>
+          <div style="font-size:14px;font-weight:500;color:var(--text);">Vincent Hoang</div>
+          <div style="font-size:12px;color:var(--text-muted);">DeferIT — Team Member</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-1" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-top:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:20px;">
+      <div style="display:flex;gap:4px;">
+        <span style="color:#4169E1;font-size:18px;">★★★★★</span>
+      </div>
+      <p style="font-size:15px;color:var(--text);line-height:1.7;font-weight:300;flex:1;">"Braeden did an amazing job designing screens and implementing features that create a seamless user experience. He implemented important features like messaging, Admin statistics, and AI analytics."</p>
+      <div style="display:flex;align-items:center;gap:12px;border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(65,105,225,0.2);border:1px solid rgba(65,105,225,0.3);display:flex;align-items:center;justify-content:center;font-family:'Archivo Black',sans-serif;font-size:14px;color:#4169E1;flex-shrink:0;">JG</div>
+        <div>
+          <div style="font-size:14px;font-weight:500;color:var(--text);">Jaxx Gale</div>
+          <div style="font-size:12px;color:var(--text-muted);">DeferIT — Team Member</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-2" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-top:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:20px;">
+      <div style="display:flex;gap:4px;">
+        <span style="color:#4169E1;font-size:18px;">★★★★★</span>
+      </div>
+      <p style="font-size:15px;color:var(--text);line-height:1.7;font-weight:300;flex:1;">"Braeden consistently punched above his weight with the UI and its feature integration. If I ever got a front-end job offer from Google I would give it to Braeden in a heartbeat."</p>
+      <div style="display:flex;align-items:center;gap:12px;border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:rgba(65,105,225,0.2);border:1px solid rgba(65,105,225,0.3);display:flex;align-items:center;justify-content:center;font-family:'Archivo Black',sans-serif;font-size:14px;color:#4169E1;flex-shrink:0;">AK</div>
+        <div>
+          <div style="font-size:14px;font-weight:500;color:var(--text);">Austin Kabanda</div>
+          <div style="font-size:12px;color:var(--text-muted);">DeferIT — Team Member</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider" style="background:var(--bg);">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="0,0 1440,80 1440,80 0,80" fill="var(--bg2)"/>
+    <polygon points="0,0 1440,80 0,80" fill="var(--bg2)"/>
   </svg>
 </div>
 <!-- CONTACT -->
