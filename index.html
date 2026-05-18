@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Braeden Gomes — UI/UX Designer</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
@@ -83,7 +83,7 @@
     position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
     padding: 24px 60px;
-    padding-top: env(safe-area-inset-top);
+    padding-top: max(24px, env(safe-area-inset-top));
     display: flex; align-items: center; justify-content: space-between;
     background: linear-gradient(to bottom, rgba(6,8,16,0.95), transparent);
     backdrop-filter: blur(0px);
@@ -673,6 +673,7 @@ body::after {
   }
 
   @media (max-width: 768px) {
+    #reviews > div:last-child { grid-template-columns: 1fr !important; }
     .hero-logo-display { display: none; }
     .hero-content { max-width: 100%; }
     .cursor, .cursor-ring { display: none; }
@@ -898,7 +899,7 @@ body::after {
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 <div class="top-line"></div>
-<div style="position:fixed;top:0;left:0;right:0;height:60px;background:#060810;z-index:99;"></div>
+<div style="position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top);background:#060810;z-index:99;"></div>
 
 <!-- NAV -->
 <nav>
