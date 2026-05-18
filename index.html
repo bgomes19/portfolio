@@ -10,10 +10,11 @@
   .projects { grid-template-columns: 1fr !important; }
   .projects > div[style*="grid-column"] { grid-column: 1 !important; grid-template-columns: 1fr !important; }
 }
-  @supports (padding-top: env(safe-area-inset-top)) {
-    nav {
-      padding-top: calc(24px + env(safe-area-inset-top)) !important;
-      background: rgba(6,8,16,0.98) !important;
+@supports (padding-top: env(safe-area-inset-top)) {
+   nav {
+     padding-top: calc(16px + env(safe-area-inset-top)) !important;
+     background: rgba(6,8,16,0.98) !important;
+     top: 0 !important;
     }
   }
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -899,7 +900,7 @@ body::after {
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 <div class="top-line"></div>
-<div style="position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top);background:#060810;z-index:99;"></div>
+<div style="position:fixed;top:0;left:0;right:0;height:calc(env(safe-area-inset-top) + 1px);background:#060810;z-index:200;pointer-events:none;"></div>
 
 <!-- NAV -->
 <nav>
