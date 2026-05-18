@@ -743,27 +743,21 @@ body::after {
 
 /* Glassmorphism service cards */
 #services .service-card {
-  background: rgba(255,255,255,0.06) !important;
+  background: rgba(255,255,255,0.04) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.08) !important;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  border-top: 1px solid rgba(255,255,255,0.15) !important;
+  border-left: 1px solid rgba(255,255,255,0.1) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
   transition: all 0.3s ease;
 }
 #services .service-card:hover {
-  background: rgba(255,255,255,0.06) !important;
-  border-color: rgba(65,105,225,0.3) !important;
-  box-shadow: 0 8px 40px rgba(65,105,225,0.15), inset 0 1px 0 rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.07) !important;
+  border-color: rgba(65,105,225,0.4) !important;
+  border-top-color: rgba(65,105,225,0.5) !important;
+  box-shadow: 0 12px 40px rgba(65,105,225,0.2), inset 0 1px 0 rgba(255,255,255,0.08);
   transform: translateY(-4px);
-}
-#services .service-card.featured {
-  background: rgba(65,105,225,0.12) !important;
-  border-color: rgba(65,105,225,0.35) !important;
-  box-shadow: 0 8px 40px rgba(65,105,225,0.2), inset 0 1px 0 rgba(107,143,255,0.15);
-}
-#services .service-card.featured:hover {
-  background: rgba(65,105,225,0.18) !important;
-  box-shadow: 0 16px 60px rgba(65,105,225,0.3), inset 0 1px 0 rgba(107,143,255,0.2);
 }
 
 /* Glassmorphism skill cards */
@@ -873,6 +867,28 @@ body::after {
   border-top: 1px solid rgba(255,255,255,0.12) !important;
   border-left: 1px solid rgba(255,255,255,0.08) !important;
 }
+.service-tier {
+  color: var(--text) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em;
+}
+.service-price {
+  color: var(--text) !important;
+}
+.service-unit {
+  color: var(--text-muted) !important;
+  font-size: 14px !important;
+}
+.service-features li {
+  color: var(--text) !important;
+  font-size: 15px !important;
+}
+.service-features li::before {
+  color: var(--blue) !important;
+}
+.service-divider {
+  background: rgba(255,255,255,0.1) !important;
+}
 </style>
 </head>
 <body style="padding-top: env(safe-area-inset-top); background: #060810;">
@@ -981,7 +997,7 @@ body::after {
   </div>
 
   <!-- Social Content — bottom left -->
-  <div class="reveal reveal-delay-1" style="background:#0D0A1E;border:1px solid rgba(124,58,237,0.2);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;">
+  <div class="reveal reveal-delay-1" style="background:#0A0D18;border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;">
     <div style="flex:1;background:#110D20;overflow:hidden;position:relative;min-height:220px;">
       <button onclick="this.nextElementSibling.scrollBy({left:-220,behavior:'smooth'})" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);z-index:10;background:rgba(10,13,24,0.8);border:1px solid rgba(124,58,237,0.3);color:#A78BFA;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">‹</button>
       <div class="deferit-gallery" style="display:flex;height:100%;align-items:center;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x mandatory;">
@@ -1005,7 +1021,7 @@ body::after {
   </div>
 
   <!-- Pulse Dashboard — bottom right -->
-  <div class="reveal reveal-delay-2" style="background:#041410;border:1px solid rgba(5,150,105,0.2);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;">
+  <div class="reveal reveal-delay-2" style="background:#0A0D18;border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;">
     <div style="flex:1;overflow:hidden;min-height:220px;">
       <img src="dashboard.jpeg" alt="Pulse Dashboard" style="width:100%;height:100%;object-fit:cover;object-position:top left;">
     </div>
@@ -1118,8 +1134,7 @@ body::after {
         <li>3 day delivery</li>
       </ul>
     </div>
-    <div class="service-card featured reveal reveal-delay-1">
-      <div class="service-badge">Most Popular</div>
+    <div class="service-card reveal reveal-delay-1">
       <div class="service-tier">Standard</div>
       <div class="service-price">$150</div>
       <div class="service-unit">up to 5 screens</div>
