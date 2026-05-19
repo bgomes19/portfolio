@@ -667,7 +667,7 @@
     body { cursor: auto; }
     nav {
       padding: 16px 20px;
-      padding-top: 59px;
+      padding-top: 16px;
       background: rgba(6,8,16,0.98) !important;
       backdrop-filter: blur(20px);
     }
@@ -886,7 +886,7 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 <div class="top-line"></div>
-<div style="position:fixed;top:0;left:0;right:0;height:0px;background:#060810;z-index:200;pointer-events:none;" id="safe-area-cover"></div>
+<div style="position:fixed;top:0;left:0;right:0;height:59px;background:#060810;z-index:99;pointer-events:none;display:none;" id="safe-area-cover"></div>
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo"><img src="logo.png" alt="BG Logo" style="height:38px;width:auto;"></a>
@@ -1253,11 +1253,7 @@
 <script>
   // Show safe area cover only on iOS
   if (/iPhone|iPad/.test(navigator.userAgent)) {
-  const cover = document.getElementById('safe-area-cover');
-  const safeArea = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sat') || '0');
-  const height = safeArea || 59;
-  cover.style.height = height + 'px';
-  document.querySelector('nav').style.paddingTop = height + 'px';
+  document.getElementById('safe-area-cover').style.display = 'block';
 }
   // Custom cursor
   const cursor = document.getElementById('cursor');
@@ -1296,10 +1292,12 @@
       nav.style.background = 'rgba(6,8,16,0.95)';
       nav.style.backdropFilter = 'blur(20px)';
       nav.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+      document.getElementById('safe-area-cover').style.background = 'rgba(6,8,16,0.95)';
     } else {
       nav.style.background = 'linear-gradient(to bottom, rgba(6,8,16,0.95), transparent)';
       nav.style.backdropFilter = 'blur(0px)';
       nav.style.borderBottom = 'none';
+      document.getElementById('safe-area-cover').style.background = '#060810';
     }
   });
 const canvas = document.getElementById('particles');
