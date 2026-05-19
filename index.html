@@ -6,6 +6,10 @@
 <title>Braeden Gomes — UI/UX Designer</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
+#status-bar-cover { display: none; }
+@media (max-width: 768px) {
+  #status-bar-cover { display: block !important; }
+}
   @media (max-width: 768px) {
   .projects { grid-template-columns: 1fr !important; }
   .projects > div[style*="grid-column"] { grid-column: 1 !important; grid-template-columns: 1fr !important; }
@@ -885,9 +889,8 @@
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
-<div class="top-line"></div>
 <!-- NAV -->
-<div style="position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top);background:#060810;z-index:101;"></div>
+<div id="status-bar-cover" style="position:fixed;top:0;left:0;right:0;height:60px;background:#060810;z-index:9999;pointer-events:none;"></div>
 <nav>
   <a href="#" class="nav-logo"><img src="logo.png" alt="BG Logo" style="height:38px;width:auto;"></a>
   <ul class="nav-links">
