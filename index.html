@@ -28,7 +28,9 @@
     --text: #F0F4FF;
     --text-muted: #6B7A9E;
     --text-dim: #3A4460;
+    --sat: env(safe-area-inset-top);
   }
+
 
   html { scroll-behavior: smooth; background: #060810; }
 
@@ -451,7 +453,6 @@
   /* ABOUT */
   #about { background: var(--bg); }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .about-text { }
   .about-intro {
     font-size: 22px;
     font-weight: 300;
@@ -522,7 +523,7 @@
     border-color: var(--border);
   }
   .service-card:not(.featured):hover { border-color: var(--border-blue); transform: translateY(-4px); }
-  .service-card.featured:hover { ba.service-card:not(.featured):hover { background: var(--blue) !important; border-color: var(--blue) !important; transform: translateY(-4px); box-shadow: 0 24px 60px rgba(30,127,255,0.4); color: white; }ckground: var(--blue); border-co.service-card:not(.featured):hover { background: var(--blue); border-color: var(--blue); transform: translateY(-4px); box-shadow: 0 24px 60px rgba(30,127,255,0.4); }lor: var(--blue); transform: translateY(-4px); box-shadow: 0 24px 60px rgba(30,127,255,0.4); }
+  .service-card:hover { border-color: var(--border-blue); transform: translateY(-4px); }
   .service-badge {
     display: inline-block;
     font-size: 10px; font-weight: 700;
@@ -885,7 +886,7 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 <div class="top-line"></div>
-<div style="position:fixed;top:0;left:0;right:0;height:59px;background:#060810;z-index:200;pointer-events:none;display:none;" id="safe-area-cover"></div>
+<div style="position:fixed;top:0;left:0;right:0;height:0px;background:#060810;z-index:200;pointer-events:none;" id="safe-area-cover"></div>
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo"><img src="logo.png" alt="BG Logo" style="height:38px;width:auto;"></a>
@@ -1252,7 +1253,11 @@
 <script>
   // Show safe area cover only on iOS
   if (/iPhone|iPad/.test(navigator.userAgent)) {
-  document.getElementById('safe-area-cover').style.display = 'block';
+  const cover = document.getElementById('safe-area-cover');
+  const safeArea = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sat') || '0');
+  const height = safeArea || 59;
+  cover.style.height = height + 'px';
+  document.querySelector('nav').style.paddingTop = height + 'px';
 }
   // Custom cursor
   const cursor = document.getElementById('cursor');
