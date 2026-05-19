@@ -667,8 +667,8 @@
     body { cursor: auto; }
     nav {
       padding: 16px 20px;
-      padding-top: 16px;
-      background: rgba(6,8,16,0.98) !important;
+      padding-top: calc(16px + env(safe-area-inset-top));
+      background: #060810 !important;
       backdrop-filter: blur(20px);
     }
     .nav-links { display: none; }
