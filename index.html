@@ -10,13 +10,7 @@
   .projects { grid-template-columns: 1fr !important; }
   .projects > div[style*="grid-column"] { grid-column: 1 !important; grid-template-columns: 1fr !important; }
 }
-@supports (padding-top: env(safe-area-inset-top)) {
-   nav {
-     padding-top: calc(16px + env(safe-area-inset-top)) !important;
-     background: rgba(6,8,16,0.98) !important;
-     top: 0 !important;
-    }
-  }
+
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
@@ -664,15 +658,6 @@
     .services-header { flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 
-body::after {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: env(safe-area-inset-top);
-    background: rgba(6,8,16,0.98);
-    z-index: 101;
-  }
-
   @media (max-width: 768px) {
     #reviews > div:last-child { grid-template-columns: 1fr !important; }
     .hero-logo-display { display: none; }
@@ -681,7 +666,7 @@ body::after {
     body { cursor: auto; }
     nav {
       padding: 16px 20px;
-      padding-top: calc(16px + env(safe-area-inset-top));
+      padding-top: 59px;
       background: rgba(6,8,16,0.98) !important;
       backdrop-filter: blur(20px);
     }
@@ -895,13 +880,12 @@ body::after {
 }
 </style>
 </head>
-<body style="padding-top: env(safe-area-inset-top); background: #060810;">
+<body style="background: #060810;">
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 <div class="top-line"></div>
-<div style="position:fixed;top:0;left:0;right:0;height:calc(env(safe-area-inset-top) + 1px);background:#060810;z-index:200;pointer-events:none;"></div>
-
+<div style="position:fixed;top:0;left:0;right:0;height:59px;background:#060810;z-index:200;pointer-events:none;display:none;" id="safe-area-cover"></div>
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo"><img src="logo.png" alt="BG Logo" style="height:38px;width:auto;"></a>
@@ -1266,6 +1250,10 @@ body::after {
 </footer>
 
 <script>
+  // Show safe area cover only on iOS
+  if (/iPhone|iPad/.test(navigator.userAgent)) {
+  document.getElementById('safe-area-cover').style.display = 'block';
+}
   // Custom cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
