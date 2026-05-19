@@ -77,10 +77,9 @@
 
   /* NAV */
   nav {
-    position: fixed; top: 0; left: 0; right: 0;
+    position: fixed; top: 60px; left: 0; right: 0;
     z-index: 100;
     padding: 24px 60px;
-    padding-top: calc(24px + env(safe-area-inset-top, 47px));
     display: flex; align-items: center; justify-content: space-between;
     background: #060810;
     backdrop-filter: blur(0px);
@@ -676,8 +675,8 @@
     .cursor, .cursor-ring { display: none; }
     body { cursor: auto; }
     nav {
+      top: 60px !important;
       padding: 16px 20px;
-      padding-top: calc(16px + env(safe-area-inset-top, 47px)) !important;
       background: #060810 !important;
       backdrop-filter: blur(20px);
     }
@@ -896,6 +895,7 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 <div class="top-line"></div>
+<div style="position:fixed;top:0;left:0;right:0;height:60px;background:#060810;z-index:101;pointer-events:none;"></div>
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo"><img src="logo.png" alt="BG Logo" style="height:38px;width:auto;"></a>
