@@ -125,6 +125,84 @@
   }
   .nav-cta:hover { background: var(--blue-glow-strong); border-color: var(--blue); }
 
+  /* Hamburger menu */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10001;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile menu overlay */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(6,8,16,0.98);
+    backdrop-filter: blur(20px);
+    z-index: 9998;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .mobile-menu.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .mobile-menu a {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--blue); }
+  .mobile-menu .mobile-cta {
+    margin-top: 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--blue);
+    border: 1px solid var(--border-blue);
+    padding: 14px 32px;
+    border-radius: 100px;
+    background: var(--blue-glow);
+    letter-spacing: 0;
+  }
+
   /* HERO */
   .hero {
     min-height: 100vh;
@@ -676,7 +754,9 @@
       backdrop-filter: blur(20px);
     }
     .nav-links { display: none; }
-    .nav-cta { padding: 8px 16px; font-size: 12px; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: flex; }
     .hero { padding: 100px 20px 60px; min-height: 90vh; }
     .hero-title { font-size: clamp(48px, 12vw, 80px); letter-spacing: -1px; }
     .hero-sub { font-size: 16px; margin-bottom: 36px; }
@@ -900,7 +980,21 @@
     <li><a href="#reviews">Reviews</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Let's Talk</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#work">Work</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contact" class="mobile-cta">Let's Talk</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1283,6 +1377,27 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  // Nav scroll effect
+  const nav = document.querySelector('nav');
 
   // Nav scroll effect
   const nav = document.querySelector('nav');
