@@ -1027,18 +1027,26 @@
   </div>
 </section>
 
+<!-- MARQUEE -->
+<div style="overflow:hidden;border-top:0.5px solid rgba(255,255,255,0.06);border-bottom:0.5px solid rgba(255,255,255,0.06);padding:16px 0;background:var(--bg2);">
+  <div id="marquee" style="display:flex;width:max-content;will-change:transform;">
+    <span id="marquee-inner" style="display:flex;align-items:center;white-space:nowrap;font-size:12px;font-weight:500;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;"></span>
+    <span id="marquee-clone" style="display:flex;align-items:center;white-space:nowrap;font-size:12px;font-weight:500;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;"></span>
+  </div>
+</div>
+
 <!-- STATS -->
 <div class="stats">
   <div class="stat reveal">
-    <div class="stat-num">2<span>+</span></div>
+    <div class="stat-num" id="s1">2<span>+</span></div>
     <div class="stat-label">Years designing</div>
   </div>
   <div class="stat reveal reveal-delay-1">
-    <div class="stat-num">100<span>k</span></div>
+    <div class="stat-num" id="s2">100<span>k</span></div>
     <div class="stat-label">Eyes on my work</div>
   </div>
   <div class="stat reveal reveal-delay-2">
-    <div class="stat-num">3<span>+</span></div>
+    <div class="stat-num" id="s3">3<span>+</span></div>
     <div class="stat-label">Completed projects</div>
   </div>
   <div class="stat reveal reveal-delay-3">
@@ -1377,6 +1385,55 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+
+  // Marquee
+const marqueeItems = ['Figma','UI/UX Design','Mobile Apps','Web Design','Branding','React Native','Prototyping','SaaS Design','Social Content','Dashboard UI'];
+const dot = '<span style="color:#4169E1;margin:0 20px;font-size:14px;">◆</span>';
+const marqueeText = marqueeItems.map(i => i + dot).join('');
+document.getElementById('marquee-inner').innerHTML = marqueeText;
+document.getElementById('marquee-clone').innerHTML = marqueeText;
+
+let marqueePos = 0;
+function animateMarquee() {
+  const inner = document.getElementById('marquee-inner');
+  if (!inner) return;
+  marqueePos -= 0.4;
+  if (marqueePos <= -inner.offsetWidth) marqueePos = 0;
+  document.getElementById('marquee').style.transform = `translateX(${marqueePos}px)`;
+  requestAnimationFrame(animateMarquee);
+}
+animateMarquee();
+
+// Animated counters
+const counterTargets = { 's1': 2, 's2': 100, 's3': 3 };
+const counterSuffixes = { 's1': '+', 's2': 'k', 's3': '+' };
+let countersPlayed = false;
+
+function playCounters() {
+  if (countersPlayed) return;
+  countersPlayed = true;
+  Object.keys(counterTargets).forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const target = counterTargets[id];
+    const suffix = `<span style="color:#4169E1;">${counterSuffixes[id]}</span>`;
+    const start = performance.now();
+    const duration = 1400;
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.innerHTML = Math.round(ease * target) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}
+
+const statsObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) playCounters(); });
+}, { threshold: 0.3 });
+const statsSection = document.querySelector('.stats');
+if (statsSection) statsObserver.observe(statsSection);
 
   // Hamburger menu toggle
   const hamburger = document.getElementById('hamburger');
